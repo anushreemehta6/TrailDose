@@ -1,0 +1,52 @@
+{
+  "trialId": "string",
+  "title": "string",
+  "acronym": "string",
+  "pi": {
+    "name": "string",
+    "affiliation": "string",
+    "contact": "string"
+  },
+  "sponsor": "string",
+  "studyType": "Interventional | Observational",
+  "studyPhase": "Phase I | II | III | IV | N/A",
+  "randomized": "Yes | No",
+  "blinding": "Single | Double | Open-label",
+  "controlGroup": "Placebo | Active | None",
+  "startDate": "ISO date",
+  "endDate": "ISO date",
+  "sampleSize": "number",
+  "eligibilityCriteria": {
+    "inclusion": "string",
+    "exclusion": "string",
+    "ageRange": "string",
+    "gender": "Male | Female | All"
+  },
+  "primaryOutcome": "string",
+  "secondaryOutcomes": ["string"],
+  "intervention": {
+    "name": "string",
+    "description": "string",
+    "dosage": "string",
+    "duration": "string"
+  },
+  "ethicsApproval": "Yes | No",
+  "externalRegistryId": "string",
+  "documents": [
+    {
+      "type": "Protocol | Consent | IRB Approval",
+      "ipfsHash": "string",
+      "uploadDate": "timestamp"
+    }
+  ],
+  "updates": [
+    {
+      "field": "string",
+      "oldValue": "string",
+      "newValue": "string",
+      "timestamp": "timestamp"
+    }
+  ],
+  "owner": "Flow wallet address",
+  "verified": "boolean"
+}
