@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import Hero from './componets/hero'
+import Home from './componets/Home';
 import './App.css'
-import Navbar from './componets/Navbar'
-import Card from './componets/Card'
+import './fclConfig'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   
@@ -10,9 +11,15 @@ function App() {
   return (
     <>
     
-    <Navbar/>
-      <Hero/>
-  <Card/>
+ <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        
+        
+      </Routes>
+
+      
+    </BrowserRouter>
     </>
   )
 }
