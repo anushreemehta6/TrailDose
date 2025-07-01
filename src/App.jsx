@@ -3,6 +3,7 @@ import Home from './componets/Home';
 import './App.css'
 import './fclConfig'
 import Detail from './componets/Detail';
+import Pi from './dashboard/Pi';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details" element={<Detail />} />
-        
+        <Route path="/dashboard/pi" element={<Pi />} />
       </Routes>
 
       
