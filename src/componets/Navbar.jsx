@@ -13,7 +13,7 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-        <a href="#home" className="text-gray-600 hover:text-black font-medium">
+        <a href="/" className="text-gray-600 hover:text-black font-medium">
           Home
         </a>
         <a href="#about" className="text-gray-600 hover:text-black font-medium">
