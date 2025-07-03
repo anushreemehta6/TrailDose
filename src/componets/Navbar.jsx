@@ -33,6 +33,7 @@ const Navbar = () => {
         {/* <button className="bg-[#A7F3D0] text-black font-semibold px-4 py-2 rounded-md hover:bg-[#c2b1d8] transition duration-300">
           Connect Wallet
         </button> */}
+        
         <Wallet/>
       </div>
     </nav>

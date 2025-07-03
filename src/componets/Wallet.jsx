@@ -16,7 +16,7 @@ function Wallet() {
     
 
 
- <div>
+ <div >
       {user.loggedIn ? (
         <><div  >
           <p>👛 Wallet Connected: {user.addr}</p>

@@ -102,7 +102,16 @@ function Detail() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-
+          <a href="/dashboard/pi"> <button
+            
+            
+            className={` ${!dropdownOpen? "disabled" : " block"} focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 inline-flex items-center`}
+          >
+            Go to dashboard
+            
+          </button>
+</a>
+          
           {dropdownOpen && (
             <ul className="absolute z-10 mt-2 w-64 bg-white border rounded-lg shadow-lg text-sm">
               {roles.map((role, index) => (

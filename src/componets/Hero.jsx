@@ -25,9 +25,9 @@ function Hero() {
 </p>
   <div className="mt-8 flex justify-center gap-4 relative z-10">
     
-    <button className="px-6 py-2 bg-[#A7F3D0] text-black rounded hover:bg-[#d5bff5] transition duration-300">
+    {/* <button className="px-6 py-2 bg-[#A7F3D0] text-black rounded hover:bg-[#d5bff5] transition duration-300">
       GET STARTED
-    </button>
+    </button> */}
   </div>
 </div>
 
