@@ -28,7 +28,7 @@ function Pi() {
         <p class=" text-center mb-6 text-lg font-normal text-gray-800 lg:text-xl ">Your research journey is protected and transparent with TrustDose.</p>
         <p class=" text-center mb-6 text-lg font-normal text-gray-800 lg:text-xl ">Launch a new clinical trial on-chain. Record every milestone securely, assign reviewers, and link funding — all from one place.</p>
         <a
-    href="#"
+    href="/register-trial"
     className="bg-[#A7F3D0] text-black font-semibold px-4 py-2 rounded-md hover:bg-[#c2b1d8] transition duration-300 mr-8 "
   >
      Register Trial
