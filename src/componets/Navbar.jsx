@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Wallet from './Wallet';
 
+
 const Navbar = () => {
+  
   return (
     <nav className="bg-white shadow-md px-6 py-4 flex items-center justify-between">
       {/* Logo + Name */}
@@ -16,7 +18,7 @@ const Navbar = () => {
         <a href="/" className="text-gray-600 hover:text-black font-medium">
           Home
         </a>
-        <a href="#about" className="text-gray-600 hover:text-black font-medium">
+        <a   href="#about" className="text-gray-600 hover:text-black font-medium">
           About
         </a>
         <a href="#features" className="text-gray-600 hover:text-black font-medium">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
-
+import Footer from './Footer';
 function Detail() {
   const existingUserInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -151,6 +151,7 @@ function Detail() {
           Reset & choose role again
         </button>
       </div>
+      <Footer/>
     </>
   );
 }

@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/details" element={<Detail />} />
         <Route path="/dashboard/pi" element={<Pi />} />
-          <Route path="/register-trial" element={<Creattrail />} />
+        <Route path="/register-trial" element={<Creattrail />} />
           
       </Routes>
 
