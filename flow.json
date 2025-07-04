@@ -1,0 +1,21 @@
+{
+  "accounts": {
+    "testnet-account": {
+      "address": "0x49f216cc3af15405",
+      "key": "bdbd5882a41cc733ad1dff7d2b8d48a2df1dd95f4c23fb8c051422636c3c592f",  
+      "sigAlgo": "ECDSA_P256",
+      "hashAlgo": "SHA3_256"
+    }
+  },
+  "contracts": {
+    "TrustDose": "./cadance/contracts/TrustDose.cdc"
+  },
+  "deployments": {
+    "testnet": {
+      "testnet-account": ["TrustDose"]
+    }
+  },
+  "networks": {
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  }
+}

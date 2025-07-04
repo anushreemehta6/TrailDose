@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import Navbar from './Navbar'
-function RegisterTrial() {
+import * as fcl from "@onflow/fcl";
+import { useState } from "react";
+import Navbar from "../componets/Navbar";
+
+export default function CreateTrial() {
   const [formData, setFormData] = useState({
     title: "",
     condition: "",
@@ -10,43 +12,71 @@ function RegisterTrial() {
     endDate: "",
     studyType: "",
     description: "",
-    documentLink: "",
+    documents: "",
     milestones: [""],
   });
 
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleMilestoneChange = (index, value) => {
-    const newMilestones = [...formData.milestones];
-    newMilestones[index] = value;
-    setFormData(prev => ({ ...prev, milestones: newMilestones }));
+    const updated = [...formData.milestones];
+    updated[index] = value;
+    setFormData((prev) => ({ ...prev, milestones: updated }));
   };
 
   const addMilestone = () => {
-    setFormData(prev => ({ ...prev, milestones: [...prev.milestones, ""] }));
+    setFormData((prev) => ({
+      ...prev,
+      milestones: [...prev.milestones, ""],
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Trial data:", formData);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/cadence/transactions/createTrial.cdc");
+      const cadence = await res.text();
 
-    // 👉 Send this data to Flow blockchain (later: via createTrial transaction)
-    // Example: call a function like createTrialTx(formData)
+      const txId = await fcl.mutate({
+        cadence,
+        args: (arg, t) => [
+          arg(formData.title, t.String),
+          arg(formData.condition, t.String),
+          arg(formData.phase, t.String),
+          arg(formData.institution, t.String),
+          arg(formData.startDate, t.String),
+          arg(formData.endDate, t.String),
+          arg(formData.studyType, t.String),
+          arg(formData.description, t.String),
+          arg(formData.documents, t.String),
+          arg(formData.milestones.map((m) => m.trim()), t.Array(t.String)),
+        ],
+        proposer: fcl.currentUser,
+        payer: fcl.currentUser,
+        authorizations: [fcl.currentUser],
+        limit: 200,
+      });
+
+      console.log("✅ TX submitted:", txId);
+      alert("Trial successfully submitted to Flow!");
+    } catch (err) {
+      console.error("❌ Error submitting trial:", err);
+      alert("Something went wrong.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <>
       <Navbar />
       <div className="max-w-3xl mx-auto p-6">
-        <button
-    onClick={() => window.location.href = "/dashboard/pi"}
-    className="text-blue-600 hover:underline text-sm mb-4"
-  >
-    ← Back to Dashboard
-  </button>
         <h2 className="text-xl font-semibold mb-4">📋 Register New Clinical Trial</h2>
         <form onSubmit={handleSubmit} className="grid gap-4">
           <input name="title" value={formData.title} onChange={handleChange} placeholder="Trial Title" className="input" required />
@@ -75,7 +105,7 @@ function RegisterTrial() {
 
           <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Brief description of the trial" className="input h-24" required />
 
-          <input name="documentLink" value={formData.documentLink} onChange={handleChange} placeholder="Document URL or IPFS CID" className="input" />
+          <input name="documents" value={formData.documents} onChange={handleChange} placeholder="IPFS Document URL" className="input" />
 
           <div>
             <label className="font-medium">Milestone Plan</label>
@@ -93,13 +123,11 @@ function RegisterTrial() {
             </button>
           </div>
 
-          <button type="submit" className="bg-[#90ddb9] px-4 py-2 rounded  hover:bg-[#c2b1d8] transition duration-300">
-            Submit Trial
+          <button type="submit" className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800" disabled={submitting}>
+            {submitting ? "Submitting..." : "Submit Trial"}
           </button>
         </form>
       </div>
     </>
   );
 }
-
-export default RegisterTrial;
