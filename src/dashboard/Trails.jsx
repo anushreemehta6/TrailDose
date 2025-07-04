@@ -77,7 +77,8 @@ You can view full details, update milestones, or track progress in real-time.</p
                    {item.startDate}
                 </td>
                 <td class="px-6 py-4 text-right flex gap-5">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">view</a>
+                    <a href={`/trial/${item.id}`} className="text-blue-600 hover:underline">View</a>
+
                      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
             </tr>

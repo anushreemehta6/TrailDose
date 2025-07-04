@@ -6,6 +6,7 @@ import Detail from './componets/Detail';
 import Pi from './dashboard/Pi';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Creattrail from './componets/Creattrail'
+import TrialDetail from './componets/TrialDetail';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="/details" element={<Detail />} />
         <Route path="/dashboard/pi" element={<Pi />} />
         <Route path="/register-trial" element={<Creattrail />} />
+        <Route path="/trial/:id" element={<TrialDetail />} />
+
           
       </Routes>
 

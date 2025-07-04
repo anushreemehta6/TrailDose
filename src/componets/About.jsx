@@ -5,16 +5,7 @@ function About() {
   return (
     <div id='about'  className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
       <div>
-        <img
-          className="w-full dark:hidden"
-          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg"
-          alt="dashboard light"
-        />
-        <img
-          className="w-full hidden dark:block rounded-sm"
-          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg"
-          alt="dashboard dark"
-        />
+        <img src="src/assets/image.png" alt="" className='rounded-md' />
       </div>
       <div className="mt-4 md:mt-0">
        

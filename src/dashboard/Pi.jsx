@@ -3,6 +3,7 @@ import Navbar from '../componets/Navbar'
 import * as fcl from "@onflow/fcl"
 import { useEffect, useState } from 'react'
 import Trails from './Trails'
+import Footer from '../componets/Footer'
 
 function Pi() {
   const [user, setUser] = useState({ loggedIn: true })
@@ -39,6 +40,8 @@ function Pi() {
       <div className='m-5'>
 <Trails/>
       </div>
+
+      <Footer/>
       
     </>
   )
