@@ -8,7 +8,7 @@
     }
   },
   "contracts": {
-    "TrustDose": "./cadance/contracts/TrustDose.cdc"
+    "TrustDose": "public/cadance/contracts/TrustDose.cdc"
   },
   "deployments": {
     "testnet": {

@@ -1,12 +1,7 @@
-access(all) var trials: {UInt64: Trial}
-access(all) var nextTrialID: UInt64
-
-init() {
-    self.trials = {}
-    self.nextTrialID = 1
-}
-
 access(all) contract TrustDose {
+
+    access(all) var trialCount: UInt64
+    access(all) var trials: {UInt64: Trial}
 
     access(all) struct Trial {
         access(all) let id: UInt64
@@ -22,7 +17,6 @@ access(all) contract TrustDose {
         access(all) let milestones: [String]
         access(all) let creator: Address
 
-        // New Fields
         access(all) var enrollmentGoal: UInt64
         access(all) var currentEnrollment: UInt64
         access(all) var treatmentArms: [String]
@@ -68,41 +62,6 @@ access(all) contract TrustDose {
             self.eventLog = []
         }
     }
-    access(all) fun createTrial(
-    title: String,
-    condition: String,
-    phase: String,
-    institution: String,
-    startDate: String,
-    endDate: String,
-    studyType: String,
-    description: String,
-    documents: String,
-    milestones: [String],
-    creator: Address
-) {
-    let newTrial = Trial(
-        id: TrustDose.nextTrialID,
-        title: title,
-        condition: condition,
-        phase: phase,
-        institution: institution,
-        startDate: startDate,
-        endDate: endDate,
-        studyType: studyType,
-        description: description,
-        documents: documents,
-        milestones: milestones,
-        creator: creator
-    )
-
-    TrustDose.trials[TrustDose.nextTrialID] = newTrial
-    TrustDose.nextTrialID = TrustDose.nextTrialID + 1
-}
-
-
-    access(all) var trialCount: UInt64
-    access(all) var trials: {UInt64: Trial}
 
     access(all) fun createTrial(
         title: String,
@@ -140,6 +99,14 @@ access(all) contract TrustDose {
         )
         self.trials[self.trialCount] = trial
     }
+
+    access(all) fun getAllTrials(): [Trial] {
+    var result: [Trial] = []
+    for trial in self.trials.values {
+        result.append(trial)
+    }
+    return result
+}
 
     init() {
         self.trialCount = 0

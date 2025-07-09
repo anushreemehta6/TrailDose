@@ -1,4 +1,4 @@
-import TrustDose from  0x49f216cc3af15405
+import TrustDose from 0x49f216cc3af15405
 
 transaction(
   title: String,
@@ -10,7 +10,10 @@ transaction(
   studyType: String,
   description: String,
   documents: String,
-  milestones: [String]
+  milestones: [String],
+  enrollmentGoal: UInt64,
+  treatmentArms: [String],
+  doseDetails: {String: String}
 ) {
     prepare(signer: AuthAccount) {
         TrustDose.createTrial(
@@ -24,7 +27,10 @@ transaction(
             description: description,
             documents: documents,
             milestones: milestones,
-            creator: signer.address
+            enrollmentGoal: enrollmentGoal,
+            treatmentArms: treatmentArms,
+            doseDetails: doseDetails,
+            signer: signer.address
         )
     }
 }
