@@ -1,4 +1,4 @@
-import "std"
+// cadence-version: 1.0.0
 import TrustDose from 0x49f216cc3af15405
 
 transaction(
@@ -16,22 +16,26 @@ transaction(
   treatmentArms: [String],
   doseDetails: {String: String}
 ) {
-    prepare(signer: AuthAccount) {
-        TrustDose.createTrial(
-            title: title,
-            condition: condition,
-            phase: phase,
-            institution: institution,
-            startDate: startDate,
-            endDate: endDate,
-            studyType: studyType,
-            description: description,
-            documents: documents,
-            milestones: milestones,
-            enrollmentGoal: enrollmentGoal,
-            treatmentArms: treatmentArms,
-            doseDetails: doseDetails,
-            signer: signer.address
-        )
-    }
+  prepare(signer: AuthAccount) {
+    TrustDose.createTrial(
+      title: title,
+      condition: condition,
+      phase: phase,
+      institution: institution,
+      startDate: startDate,
+      endDate: endDate,
+      studyType: studyType,
+      description: description,
+      documents: documents,
+      milestones: milestones,
+      enrollmentGoal: enrollmentGoal,
+      treatmentArms: treatmentArms,
+      doseDetails: doseDetails,
+      signer: signer.address
+    )
+  }
+
+  execute {
+    log("✅ Trial successfully created")
+  }
 }
