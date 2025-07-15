@@ -1,0 +1,40 @@
+[
+  { "type": "String", "value": "Trial 001" },
+  { "type": "String", "value": "Diabetes" },
+  { "type": "String", "value": "II" },
+  { "type": "String", "value": "AIIMS Delhi" },
+  { "type": "String", "value": "2025-01-01" },
+  { "type": "String", "value": "2025-12-31" },
+  { "type": "String", "value": "Interventional" },
+  { "type": "String", "value": "Testing new insulin delivery" },
+  { "type": "String", "value": "ipfs://Qm123examplehash" },
+  {
+    "type": "Array",
+    "value": [
+      { "type": "String", "value": "Recruitment" },
+      { "type": "String", "value": "Treatment Phase" },
+      { "type": "String", "value": "Results Analysis" }
+    ]
+  },
+  { "type": "UInt64", "value": "200" },
+  {
+    "type": "Array",
+    "value": [
+      { "type": "String", "value": "Arm A" },
+      { "type": "String", "value": "Arm B" }
+    ]
+  },
+  {
+    "type": "Dictionary",
+    "value": [
+      {
+        "key": { "type": "String", "value": "DrugA" },
+        "value": { "type": "String", "value": "50mg/day" }
+      },
+      {
+        "key": { "type": "String", "value": "DrugB" },
+        "value": { "type": "String", "value": "25mg/day" }
+      }
+    ]
+  }
+]

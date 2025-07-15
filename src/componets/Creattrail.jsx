@@ -83,27 +83,34 @@ export default function CreateTrial() {
     console.log("Submitting trial data:", formData);
 
     const txId = await fcl.mutate({
-      cadence,
-      args: (arg, t) => [
-        arg(formData.title, t.String),
-        arg(formData.condition, t.String),
-        arg(formData.phase, t.String),
-        arg(formData.institution, t.String),
-        arg(formData.startDate, t.String),
-        arg(formData.endDate, t.String),
-        arg(formData.studyType, t.String),
-        arg(formData.description, t.String),
-        arg(formData.documents, t.String),
-        arg(formData.milestones.map(m => m.trim()), t.Array(t.String)),
-        arg(formData.enrollmentGoal.toString(), t.UInt64),     // ✅ Converted to string
-        arg(formData.treatmentArms.map(a => a.trim()), t.Array(t.String)),
-        arg(Object.entries(formData.doseDetails), t.Dictionary({ key: t.String, value: t.String }))
-      ],
-      proposer: fcl.currentUser,
-      payer: fcl.currentUser,
-      authorizations: [fcl.currentUser],
-      limit: 300,
-    });
+  cadence,
+  args: (arg, t) => [
+    arg(formData.title, t.String),
+    arg(formData.condition, t.String),
+    arg(formData.phase, t.String),
+    arg(formData.institution, t.String),
+    arg(formData.startDate, t.String),
+    arg(formData.endDate, t.String),
+    arg(formData.studyType, t.String),
+    arg(formData.description, t.String),
+    arg(formData.documents, t.String),
+    arg(formData.milestones.map(m => arg(m.trim(), t.String)), t.Array(t.String)),
+    arg(formData.enrollmentGoal.toString(), t.UInt64),
+    arg(formData.treatmentArms.map(a => arg(a.trim(), t.String)), t.Array(t.String)),
+    arg(
+      Object.entries(formData.doseDetails).map(([k, v]) => ({
+        key: arg(k.trim(), t.String),
+        value: arg(v.trim(), t.String)
+      })),
+      t.Dictionary({ key: t.String, value: t.String })
+    )
+  ],
+  proposer: fcl.currentUser,
+  payer: fcl.currentUser,
+  authorizations: [fcl.currentUser],
+  limit: 300,
+});
+
 
     console.log("✅ TX submitted:", txId);
     alert("Trial successfully submitted to Flow!");

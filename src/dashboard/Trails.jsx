@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as fcl from "@onflow/fcl";
-import Navbar from '../componets/Navbar'; // adjust path if needed
+import Navbar from "../componets/Navbar";
 
 export default function Trials() {
   const [trials, setTrials] = useState([]);
@@ -12,28 +12,26 @@ export default function Trials() {
 
   const fetchTrials = async () => {
     try {
-      const res = await fetch("/cadance/scripts/getAllTrials.cdc"); // ✅ corrected path
+      const res = await fetch("/cadence/scripts/getAllTrials.cdc");
       const cadence = await res.text();
 
       const response = await fcl.query({
         cadence,
         args: (arg, t) => [],
       });
-      console.log("Fetched trials:", response);
 
-
+      console.log("Fetched Trials:", response);
       setTrials(response);
     } catch (error) {
       console.error("Failed to fetch trials:", error);
     } finally {
-      setLoading(false); // ✅ make sure loading is turned off
+      setLoading(false);
     }
   };
 
   return (
     <>
-      
-
+   
       <div className="max-w-5xl mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">📋 My Trials</h2>
 
@@ -57,13 +55,15 @@ export default function Trials() {
               <tbody>
                 {trials.map((trial, idx) => (
                   <tr key={idx} className="bg-white border-b hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium text-gray-900">{trial.title}</td>
+                    <td className="px-6 py-4 font-medium text-gray-900">
+                      {trial.title}
+                    </td>
                     <td className="px-6 py-4">{trial.phase}</td>
                     <td className="px-6 py-4">{trial.condition}</td>
                     <td className="px-6 py-4">{trial.startDate}</td>
                     <td className="px-6 py-4">{trial.endDate}</td>
                     <td className="px-6 py-4 text-blue-600 hover:underline">
-                      <a href={`/trial/${idx}`}>View</a>
+                      <a href={`/trial/${trial.id}`}>View</a>
                     </td>
                   </tr>
                 ))}
